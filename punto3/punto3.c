@@ -1,52 +1,50 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define FIL 4
 #define COL 4
 
+int pds(int pf, int pc, int matriz[pf][pc]){
+    int i, j, c=1;
+    for (i=0; i<pf && c; i++){
+        for(j=0;j<pc && c; j++){
+            if(matriz[pf][pc]>matriz[pf][j] && matriz[pf][pc]<matriz[i][pc]){
+                c=0;
+                }else
+                    c=1;
+            }
+        }
+
+    return c;
+}
+
 void imprimir_arr(int arr[4][4]){
     int i, j;
-    printf("    TABLA\n\n");
+    printf("   TABLA\n\n");
     for (i=0;i<FIL;i++){
         for (j=0;j<COL;j++)
         printf("%d ", arr[i][j]);
-
         printf("\n\n");
     }
 }
 
-int dev_max(int arr[4][4]){
-    int i, j;
-    int max=arr[0][0];
-    for (i=0;i<FIL;i++)
-        for (j=0;j<COL;j++)
-            if(arr[i][j] > max)
-                max = arr[i][j];
-
-    return max;
-}
-
-
-int dev_min(int arr[4][4]){
-  int i, j;
-    int min=arr[0][0];
-    for (j=0;j<COL;j++)
-        for (i=0;i<FIL;i++)
-            if(arr[i][j] < min)
-                min = arr[i][j];
-
-    return min;
-}
-
 int main(){
 
-    int i, j, arr[4][4]= {3,33,15,84
-                         ,6,25,48,74
-                         ,7,41,32,13
-                         ,9,71,18,25};
+    int arr[FIL][COL] = {3,33,15,84
+                        ,6,25,48,74
+                        ,7,41,32,13
+                        ,9,71,18,25};
 
+    int pf=4, pc=1;
     imprimir_arr(arr);
-    dev_max(arr);
+    pds(pf, pc, arr);
 
-    printf("%d", dev_max(arr));
-    printf("      %d", dev_min(arr));
+
+    if(pds(pf,pc,arr)==0)
+        printf("Hay un punto de silla en: (%d,%d)", pf,pc);
+    else
+        printf("No hay un punto de silla en: (%d,%d)", pf, pc);
+
+
     return 0;
 }
+
