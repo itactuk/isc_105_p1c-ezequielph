@@ -18,8 +18,13 @@ int pds(int pf, int pc, int matriz[pf][pc]){
 }
 
 void imprimir_arr(int arr[4][4]){
-    int i, j;
+    int i, j, k;
     printf("   TABLA\n\n");
+    for (k=0;k<4;k++)
+        printf("%d  ", k);
+
+    printf("\n-----------\n");
+
     for (i=0;i<FIL;i++){
         for (j=0;j<COL;j++)
         printf("%d ", arr[i][j]);
@@ -34,12 +39,12 @@ int main(){
                         ,7,41,32,13
                         ,9,71,18,25};
 
-    int pf=4, pc=1;
+    int pf=3, pc=0;
     imprimir_arr(arr);
     pds(pf, pc, arr);
 
 
-    if(pds(pf,pc,arr)==0)
+    if(pds(pf,pc,arr)==1)
         printf("Hay un punto de silla en: (%d,%d)", pf,pc);
     else
         printf("No hay un punto de silla en: (%d,%d)", pf, pc);
@@ -47,4 +52,3 @@ int main(){
 
     return 0;
 }
-
